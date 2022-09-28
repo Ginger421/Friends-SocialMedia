@@ -27,7 +27,7 @@ module.exports = {
         .then((thoughts) => res.json(thoughts))
         .catch((err) => res.status(500).json(err))
       },
-      // Delete a course
+      // Delete a thought
       deleteThought(req, res) {
         Thoughts.findOneAndDelete({ _id: req.params.thoughtsId })
           .then((thoughts) =>
@@ -38,7 +38,7 @@ module.exports = {
           .then(() => res.json({ message: 'Thought deleted!' }))
           .catch((err) => res.status(500).json(err));
       },
-      // Update a course
+      // Update a thought
       updateThought(req, res) {
         Thoughts.findOneAndUpdate(
           { _id: req.params.thoughtsId },
@@ -47,7 +47,7 @@ module.exports = {
         )
           .then((thoughts) =>
             !thoughts
-              ? res.status(404).json({ message: 'No course with this id!' })
+              ? res.status(404).json({ message: 'No thought with this id!' })
               : res.json(course)
           )
           .catch((err) => res.status(500).json(err));
